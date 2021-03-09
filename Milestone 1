@@ -1,1 +1,601 @@
-
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "CS101 Project",
+      "provenance": [],
+      "collapsed_sections": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/sahil-2301/CS101-Project/blob/main/Milestone%201\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "YVsXHKxQ7pRW",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "0dd9f1cd-5848-4c3a-c40e-0f17df00586f"
+      },
+      "source": [
+        "#Function 1\r\n",
+        "def dna_count(dna): #counts how many times each nucleotide appears\r\n",
+        "    dna = dna.upper()\r\n",
+        "    count_A = dna.count('A')\r\n",
+        "    count_C  =dna.count('C')\r\n",
+        "    count_G = dna.count('G')\r\n",
+        "    count_T = dna.count('T')\r\n",
+        "    return count_A,count_C,count_G,count_T\r\n",
+        "\r\n",
+        "dna0=\"AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC\"\r\n",
+        "dna_count(dna0) #should return (20, 12, 17, 21)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(20, 12, 17, 21)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 15
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "id": "WjEjmyYrCUPI",
+        "outputId": "5d741bb7-cdf9-42e4-ff03-368a03ac19e9"
+      },
+      "source": [
+        "#Function 2\r\n",
+        "def dna2rna(dna): #converts from DNA to RNA\r\n",
+        "    rna = ''\r\n",
+        "    for symbol in dna:\r\n",
+        "        if symbol == 'T':\r\n",
+        "            rna = rna + 'U'\r\n",
+        "        elif symbol == 'A':\r\n",
+        "            rna = rna + 'A'\r\n",
+        "        elif symbol == 'C':\r\n",
+        "            rna = rna + 'C'\r\n",
+        "        elif symbol == 'G':\r\n",
+        "            rna = rna + 'G'\r\n",
+        "    return rna\r\n",
+        "\r\n",
+        "dna1 = \"GATGGAACTTGACTACGTAAATT\"\r\n",
+        "dna2rna(dna1) #should return 'GAUGGAACUUGACUACGUAAAUU'"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            },
+            "text/plain": [
+              "'GAUGGAACUUGACUACGUAAAUU'"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 1
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "id": "UhHigTQqCVjI",
+        "outputId": "036d9f51-3ffb-4245-997e-6d7511358768"
+      },
+      "source": [
+        "#Function 3\r\n",
+        "def reverse_complement(dna): #takes in DNA sequence string and returns a new reverse complement string\r\n",
+        "    complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}\r\n",
+        "    return ''.join([complement[base] for base in dna[::-1]])\r\n",
+        "\r\n",
+        "dna2 = \"AAAACCCGGT\"\r\n",
+        "reverse_complement(dna2) #should return 'ACCGGGTTTT'"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            },
+            "text/plain": [
+              "'ACCGGGTTTT'"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 2
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "zr6rn2M5-prE",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "6e5276c7-f13c-4d1c-fce2-531a7110a7e9"
+      },
+      "source": [
+        "#Function 4\r\n",
+        "\r\n",
+        "def fact(n): #factorial\r\n",
+        "    if n == 0:\r\n",
+        "        return 1\r\n",
+        "    else:\r\n",
+        "        return n * fact(n - 1)\r\n",
+        "\r\n",
+        "def combin(n, r): #combination\r\n",
+        "    num = fact(n)\r\n",
+        "    dem = fact(n - r) * fact(r)\r\n",
+        "    return num / dem\r\n",
+        "\r\n",
+        "def mendels_law(hom, het, rec): #Mendel's Law\r\n",
+        "    pop = (hom + het + rec)\r\n",
+        "    \r\n",
+        "    rec_rec = combin(rec, 2) / combin(pop, 2)\r\n",
+        "    rec_het = 0.5 * ((combin(rec, 1) * combin(het, 1)) / combin(pop, 2))\r\n",
+        "    het_het = 0.25 * (combin(het, 2) / combin(pop, 2))\r\n",
+        "    \r\n",
+        "    return (1 - (rec_rec + rec_het + het_het))\r\n",
+        "    \r\n",
+        "print(mendels_law( 2, 2, 2 )) #should return 0.7833333333\r\n",
+        "print(mendels_law( 3, 3, 3 )) #should return 0.7708333333\r\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "0.7833333333333333\n",
+            "0.7708333333333334\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oOrxzGXQ-yRV",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "e2d6b67e-59a9-4857-f5f6-6dea74d4adc4"
+      },
+      "source": [
+        "#Function 5\r\n",
+        "\r\n",
+        "def fibonacci_rabbits(n, k):\r\n",
+        "    if n <= 2:\r\n",
+        "        return 1\r\n",
+        "    else:\r\n",
+        "        return (k * fibonacci_rabbits(n - 2, k)) + fibonacci_rabbits(n - 1, k)\r\n",
+        "    \r\n",
+        "print(fibonacci_rabbits(5, 3)) #should return 19"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "19\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "j_LIvwmd-4bl",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "7f51ac83-c8a6-499e-d381-b760fe58affa"
+      },
+      "source": [
+        "#Function 6\r\n",
+        "\r\n",
+        "def count_GC_content(dna): #counts the amount of GC\r\n",
+        "    return (dna.upper().count('G')) + (dna.upper().count('C'))\r\n",
+        "\r\n",
+        "def GC_content(dna_list):\r\n",
+        "    max_GC_string = ' '\r\n",
+        "    max_GC_content = 0\r\n",
+        "    \r\n",
+        "    for i in range(len(dna_list)):\r\n",
+        "        GC_content = count_GC_content(dna_list[i])\r\n",
+        "        if (GC_content) > (count_GC_content(max_GC_string)):\r\n",
+        "            max_GC_string = dna_list[i]\r\n",
+        "            max_GC_content = (count_GC_content(max_GC_string))\r\n",
+        "            max_string = i\r\n",
+        "        else:\r\n",
+        "            continue\r\n",
+        "    \r\n",
+        "    return (max_string , (max_GC_content / (len(max_GC_string))) * 100) #should return (2, 60.92)\r\n",
+        "\r\n",
+        "print( GC_content([\"CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG\",\r\n",
+        "                   \"CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC\",\r\n",
+        "                   \"CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT\"]) )"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "(2, 60.91954022988506)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "id": "UPS6eR6887pb",
+        "outputId": "4f0b60cf-1b21-49f7-f5b7-edf8cef62e5d"
+      },
+      "source": [
+        "#function 7\n",
+        "def rna2codon(triplet): #rna2codon for one triplet\n",
+        "    genetic_code = {\n",
+        "        'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L',        'CUU': 'L', 'CUC': 'L', 'CUA': 'L', 'CUG': 'L',\n",
+        "        'AUU': 'I', 'AUC': 'I', 'AUA': 'I', 'AUG': 'M',        'GUU': 'V', 'GUC': 'V', 'GUA': 'V', 'GUG': 'V',\n",
+        "\n",
+        "        'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S',        'CCU': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',\n",
+        "        'ACU': 'T', 'ACC': 'T', 'ACA': 'T', 'ACG': 'T',        'GCU': 'A', 'GCC': 'A', 'GCA': 'A', 'GCG': 'A',\n",
+        "\n",
+        "        'UAU': 'Y', 'UAC': 'Y', 'UAA': '*', 'UAG': '*',        'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',\n",
+        "        'AAU': 'N', 'AAC': 'N', 'AAA': 'K', 'AAG': 'K',        'GAU': 'D', 'GAC': 'D', 'GAA': 'E', 'GAG': 'E',\n",
+        "\n",
+        "        'UGU': 'C', 'UGC': 'C', 'UGA': '*', 'UGG': 'W',        'CGU': 'R', 'CGC': 'R', 'CGA': 'R', 'CGG': 'R',\n",
+        "        'AGU': 'S', 'AGC': 'S', 'AGA': 'R', 'AGG': 'R',        'GGU': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G',\n",
+        "    }\n",
+        "    allowed_codons = set('ACGU')\n",
+        "    for s in triplet:\n",
+        "        if s not in allowed_codons:\n",
+        "            return \"Invalid\"\n",
+        "    return genetic_code[triplet]\n",
+        "def rna2codons(rna): #rna2codons for rna sequences\n",
+        "    result = ''\n",
+        "    rna = rna.upper()\n",
+        "    for i in range(0,int( len( rna ) / 3 )):\n",
+        "        codon =  rna[ 3*i:3*i+3 ] \n",
+        "        result = result + rna2codon(codon)\n",
+        "    return result  \n",
+        "rna2codons(\"AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA\") #should return 'MAMAPRTEINSTRING'"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            },
+            "text/plain": [
+              "'MAMAPRTEINSTRING*'"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZZZo6mwY9JH5",
+        "outputId": "075b586a-50b5-4c3f-a904-aa8615741c7f"
+      },
+      "source": [
+        "#function 8\n",
+        "def locate_substring(dna_snippet, dna): #function to locate a snippet in a bigger string\n",
+        "    new_list = []\n",
+        "    for i in range(1,len(dna)):\n",
+        "        if dna[i:i+len(dna_snippet)] == dna_snippet:\n",
+        "            new_list.append(i)\n",
+        "            continue\n",
+        "    return new_list\n",
+        "locate_substring(\"ATAT\", \"GATATATGCATATACTT\") #should return [1, 3, 9]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[1, 3, 9]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IMGarhC_9mrA",
+        "outputId": "cd316135-35b1-49c0-99cf-edd435ae0b9d"
+      },
+      "source": [
+        "#function9\n",
+        "def hamming_dist(dna1, dna2): #function to calculate hamming dist\n",
+        "    count = 0\n",
+        "    for i in range(0,len(dna1)):\n",
+        "        if dna1[i] != dna2[i]:\n",
+        "            count = count + 1\n",
+        "        \n",
+        "    return count\n",
+        "hamming_dist(\"GAGCCTACTAACGGGAT\", \"CATCGTAATGACGGCCT\") #should return 7"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "7"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "UVwgyzFk9vgl",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "60d68cae-15c7-4a8d-f458-7e5f33d09f28"
+      },
+      "source": [
+        "#function 10\r\n",
+        "def count_dom_phenotype(genotypes):\r\n",
+        "    dom_offspring = 0\r\n",
+        "    dom_offspring += (genotypes[0]) * 2\r\n",
+        "    dom_offspring += (genotypes[1]) * 2\r\n",
+        "    dom_offspring += (genotypes[2]) * 2\r\n",
+        "    dom_offspring += (genotypes[3]) * 1.5\r\n",
+        "    dom_offspring += (genotypes[4])\r\n",
+        "    return dom_offspring\r\n",
+        "  \r\n",
+        "count_dom_phenotype([1, 0, 0, 1, 0, 1]) #should return 3.5"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3.5"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "K3C2N2OJAgxt",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "21da928e-d327-42e7-9fa5-3586a3fd6372"
+      },
+      "source": [
+        "#Function 11\r\n",
+        "def source_rna( protein ):\r\n",
+        "    genetic_code = {\r\n",
+        "        'F': 2,\r\n",
+        "        'L': 6,\r\n",
+        "        'I': 3,\r\n",
+        "        'M': 1,\r\n",
+        "        'V': 4,\r\n",
+        "        'S': 6,\r\n",
+        "        'P': 4,\r\n",
+        "        'T': 4,\r\n",
+        "        'A': 4,\r\n",
+        "        'Y': 2,\r\n",
+        "        'H': 2,\r\n",
+        "        'Q': 2,\r\n",
+        "        'N': 2,\r\n",
+        "        'K': 2,\r\n",
+        "        'D': 2,\r\n",
+        "        'E': 2,\r\n",
+        "        'C': 2,\r\n",
+        "        'W': 1,\r\n",
+        "        'R': 6,\r\n",
+        "        'G': 4\r\n",
+        "    }\r\n",
+        "    \r\n",
+        "    possibilities = 1\r\n",
+        "    \r\n",
+        "    for i in protein:\r\n",
+        "        possibilities *= genetic_code[i]\r\n",
+        "        \r\n",
+        "    possibilities *= 3\r\n",
+        "    possibilities %= 1000000\r\n",
+        "    \r\n",
+        "    return possibilities\r\n",
+        "    print (possibilities)\r\n",
+        "  \r\n",
+        "source_rna('MA') #should retun 12"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "12"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 9
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "F4pH81ex_M5r",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "933b3e0f-6f42-4aa0-f149-39547527f0fe"
+      },
+      "source": [
+        "#Function 12\r\n",
+        "def splice_rna(dna, intron_list):\r\n",
+        "    \r\n",
+        "    ### Remove introns from dna\r\n",
+        "    for intron in range(len(intron_list)):\r\n",
+        "        dna = dna.replace(intron_list[intron],'')\r\n",
+        "    \r\n",
+        "    ### Convert dna to rna\r\n",
+        "    def dna2rna(dna):\r\n",
+        "        rna = ''\r\n",
+        "        for symbol in dna:\r\n",
+        "            if symbol == 'A':\r\n",
+        "                rna = rna + 'A'\r\n",
+        "            elif symbol == 'G':\r\n",
+        "                rna = rna + 'G'\r\n",
+        "            elif symbol == 'C':\r\n",
+        "                rna = rna + 'C'\r\n",
+        "            elif symbol == 'T':\r\n",
+        "                rna = rna + 'U'\r\n",
+        "            else:\r\n",
+        "                return 'Invalid'\r\n",
+        "        return rna\r\n",
+        "    \r\n",
+        "    ### Look up codon that corresponds to rna\r\n",
+        "    def rna2codon(triplet):\r\n",
+        "        genetic_code = {\r\n",
+        "            'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L',        'CUU': 'L', 'CUC': 'L', 'CUA': 'L', 'CUG': 'L',\r\n",
+        "            'AUU': 'I', 'AUC': 'I', 'AUA': 'I', 'AUG': 'M',        'GUU': 'V', 'GUC': 'V', 'GUA': 'V', 'GUG': 'V',\r\n",
+        "            \r\n",
+        "            'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S',        'CCU': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',\r\n",
+        "            'ACU': 'T', 'ACC': 'T', 'ACA': 'T', 'ACG': 'T',        'GCU': 'A', 'GCC': 'A', 'GCA': 'A', 'GCG': 'A',\r\n",
+        "            \r\n",
+        "            'UAU': 'Y', 'UAC': 'Y', 'UAA': '*', 'UAG': '*',        'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',\r\n",
+        "            'AAU': 'N', 'AAC': 'N', 'AAA': 'K', 'AAG': 'K',        'GAU': 'D', 'GAC': 'D', 'GAA': 'E', 'GAG': 'E',\r\n",
+        "            \r\n",
+        "            'UGU': 'C', 'UGC': 'C', 'UGA': '*', 'UGG': 'W',        'CGU': 'R', 'CGC': 'R', 'CGA': 'R', 'CGG': 'R',\r\n",
+        "            'AGU': 'S', 'AGC': 'S', 'AGA': 'R', 'AGG': 'R',        'GGU': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G',\r\n",
+        "            }\r\n",
+        "        allowed_codons = set('ACGU')\r\n",
+        "        for s in triplet:\r\n",
+        "            if s not in allowed_codons:\r\n",
+        "                return 'Invalid'\r\n",
+        "        return genetic_code[triplet]\r\n",
+        "    \r\n",
+        "    ### Split string of rna into chunks of three and convert each into the protein\r\n",
+        "    def rna2codons(triplets):\r\n",
+        "        result = ''\r\n",
+        "        for i in range( 0,int( len( triplets ) / 3 ) ):\r\n",
+        "            codon = triplets[ 3*i:3*i+3 ]\r\n",
+        "            result = result + rna2codon(codon)\r\n",
+        "        return result\r\n",
+        "\r\n",
+        "    ### Use each function above to convert dna string without introns into the proteins\r\n",
+        "    def dna2codons(dnaString):\r\n",
+        "        codons = ''\r\n",
+        "        rna = dna2rna(dnaString)\r\n",
+        "        codons = rna2codons(rna)\r\n",
+        "        return(codons)\r\n",
+        "    \r\n",
+        "    return(dna2codons(dna))\r\n",
+        "\r\n",
+        "splice_rna('ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG',\r\n",
+        "           [\"ATCGGTCGAA\", \"ATCGGTCGAGCGTGT\"]) #should return MVYIADKQHVASREAYGHMFKVCA"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            },
+            "text/plain": [
+              "'MVYIADKQHVASREAYGHMFKVCA*'"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 10
+        }
+      ]
+    }
+  ]
+}
